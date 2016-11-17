@@ -8,13 +8,27 @@ angular.module ('TodoApp' , [] )
   text.list = function () {
     return text.titles
   }
-  self.add = function (message) {
+  text.add = function (message) {
     if(message.title != null && message.title != "")
       return text.titles.push(message)
   }
+  text.ms = function(ms){
+    if(ms.done == true)
+      ms.done= false;
+    else
+      ms.done= true;
+  }
 })
-.controller('ListTodoController' , function ($scope , TodoServices){
+.controller('ShowListController' , function ($scope , TodoServices){
   $scope.titles = TodoServices.list()
+})
+.controller('CheckboxController' , function ($scope , TodoServices){
+  $scope.checkcom = function(ms){
+    if(ms.done == true)
+      ms.done= false;
+    else
+      ms.done= true;
+  }
 })
 .controller('AddMessageController' , function ($scope , TodoServices){
 $scope.save = function () {
@@ -22,7 +36,7 @@ $scope.save = function () {
     title : $scope.title,
     done : false
   }
-  TodoService.add(message)
+  TodoServices.add(message)
   $scope.title = null
 }
 });

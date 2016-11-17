@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ContactApp">
+<html ng-app="TodoApp">
   <head>
     <meta charset="utf-8">
     <title>TODOBYMe</title>
@@ -13,12 +13,12 @@
 
     <center>
 
-      <div ng-controller="AddTodosController">
+      <div ng-controller="AddMessageController">
         <form>
           <div class="col-md-4"></div>
           <div  class="col-md-4"  >
-            <input style="width:60%; hight:20%;" type="text" class="form-control" id="title" ng-model='title' placeholder="What needs to be done?">
-            <br><button ng-click="save()" type="button" class="btn btn-primary" name="button">Add</button>
+            <input style="width:60%; hight:20%;" type="text" ng-model='title' placeholder="What needs to be done?">
+            <br><button ng-click="save()" type="button" class="btn btn-primary">Add</button>
           </div>
 
         </form>
@@ -26,15 +26,17 @@
     </div>
 
     <div class="container">
-      <div ng-controller="ListContactController">
+      <div ng-controller="ShowListController">
         <table class="table table-hover">
           <thead>
             <th class="col-md-2"> </th>
             <th class="col-md-7">  Title   </th>
             <th class="col-md-3">  Done    </th>
             <tbody>
-              <tr ng-repeat="">
-
+              <tr ng-repeat="Text Message" ng-controller="CheckboxController">
+                <td><input type="checkbox" ng-model = "done" ng-checked="text.done" ng-click="checkcom(text)"></td>
+                <td>{{text.titles}}</td>
+                <td><div ng-if="text.done">Complete!</td>
               </tr>
             </tbody>
           </thead>
