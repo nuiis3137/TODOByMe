@@ -12,12 +12,6 @@ angular.module ('TodoApp' , [] )
     if(message.title != null && message.title != "")
       return text.titles.push(message)
   }
-  text.ms = function(ms){
-    if(ms.done == true)
-      ms.done= false;
-    else
-      ms.done= true;
-  }
 })
 .controller('ShowListController' , function ($scope , TodoServices){
   $scope.titles = TodoServices.list()
@@ -25,9 +19,9 @@ angular.module ('TodoApp' , [] )
 .controller('CheckboxController' , function ($scope , TodoServices){
   $scope.checkcom = function(ms){
     if(ms.done == true)
-      ms.done= false;
+      ms.done= false
     else
-      ms.done= true;
+      ms.done= true
   }
 })
 .controller('AddMessageController' , function ($scope , TodoServices){

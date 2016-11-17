@@ -17,7 +17,7 @@
         <form>
           <div class="col-md-4"></div>
           <div  class="col-md-4"  >
-            <input style="width:60%; hight:20%;" type="text" ng-model='title' placeholder="What needs to be done?">
+            <input type="text" ng-model='title' placeholder="What needs to be done?">
             <br><button ng-click="save()" type="button" class="btn btn-primary">Add</button>
           </div>
 
@@ -33,9 +33,9 @@
             <th class="col-md-7">  Title   </th>
             <th class="col-md-3">  Done    </th>
             <tbody>
-              <tr ng-repeat="Text Message" ng-controller="CheckboxController">
+              <tr ng-repeat="text in titles" ng-controller="CheckboxController">
                 <td><input type="checkbox" ng-model = "done" ng-checked="text.done" ng-click="checkcom(text)"></td>
-                <td>{{text.titles}}</td>
+                <td>{{ text.title }}</td>
                 <td><div ng-if="text.done">Complete!</td>
               </tr>
             </tbody>
