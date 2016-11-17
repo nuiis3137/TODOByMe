@@ -1,34 +1,28 @@
-angular.module ('ContactApp' , [] )
-.service('contactServices' , function (){
-  var self = this
-  self.contacts = [
-    {fullname : 'Piyabut Nawanichbumrung' , nickname : 'Nuiis' , phone : '087-xxxxxxxx'},
-    {fullname : '21231123123 ', nickname : '1' , phone : '1'},
-    {fullname : '2 ', nickname : '2' , phone : '2'}
+angular.module ('TodoApp' , [] )
+.service('TodoServices' , function (){
+  var text = this
+  text.titles = [
+    {title : 'Piyabut' , done: false},
+    {title : 'Monthikarn ', done:true}
   ]
-  self.list = function () {
-    return self.contacts
+  text.list = function () {
+    return text.titles
   }
-  self.add = function (contact) {
-    self.contacts.push(contact)
+  self.add = function (message) {
+    if(message.title != null && message.title != "")
+      return text.titles.push(message)
   }
 })
-.controller('ListContactController' , function ($scope , contactServices){
-  $scope.contacts = contactServices.list()
+.controller('ListTodoController' , function ($scope , TodoServices){
+  $scope.titles = TodoServices.list()
 })
-.controller('AddContactController' , function ($scope , contactServices){
+.controller('AddMessageController' , function ($scope , TodoServices){
 $scope.save = function () {
-  var contact = {
-    fullname: $scope.fullname,
-    nickname: $scope.nickname,
-    phone: $scope.phone
-    }
-      contactServices.add(contact)
-      resetform()
+  var message = {
+    title : $scope.title,
+    done : false
   }
-  function resetform(){
-  $scope.fullname = ''
-  $scope.nickname = ''
-  $scope.phone = ''
+  TodoService.add(message)
+  $scope.title = null
 }
 });
